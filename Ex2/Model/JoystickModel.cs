@@ -1,14 +1,8 @@
-﻿using Ex2.Model.EventArgs;
-using Ex2.Models.Interface;
-using Ex2.ViewModels;
-using System;
-using System.Collections.Generic;
+﻿using FlightSimulator.Models.Interface;
+using FlightSimulator.ViewModels;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Ex2.Models
+namespace FlightSimulator.Models
 {
     class JoystickModel : BaseNotify,IJoystickModel
     {

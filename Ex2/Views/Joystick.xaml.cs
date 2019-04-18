@@ -1,21 +1,11 @@
-﻿using FlightSimulator.Model.EventArgs;
+﻿using Ex2.Model.EventArgs;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace FlightSimulator.Views
+namespace Ex2.Views
 {
     /// <summary>
     /// Interaction logic for Joystick.xaml
@@ -24,7 +14,7 @@ namespace FlightSimulator.Views
     {
         /// <summary>Current Aileron</summary>
         public static readonly DependencyProperty AileronProperty =
-            DependencyProperty.Register("Aileron", typeof(double), typeof(Joystick),null);
+            DependencyProperty.Register("Aileron", typeof(double), typeof(Joystick), null);
 
         /// <summary>Current Elevator</summary>
         public static readonly DependencyProperty ElevatorProperty =
@@ -89,7 +79,8 @@ namespace FlightSimulator.Views
         /// <summary>Delegate holding data for joystick state change</summary>
         /// <param name="sender">The object that fired the event</param>
         /// <param name="args">Holds new values for Aileron and Elevator</param>
-        public delegate void OnScreenJoystickEventHandler(Joystick sender, VirtualJoystickEventArgs args);
+        public delegate void OnScreenJoystickEventHandler(Joystick sender, 
+            VirtualJoystickEventArgs args);
 
         /// <summary>Delegate for joystick events that hold no data</summary>
         /// <param name="sender">The object that fired the event</param>
@@ -146,8 +137,12 @@ namespace FlightSimulator.Views
             double distance = Math.Round(Math.Sqrt(deltaPos.X * deltaPos.X + deltaPos.Y * deltaPos.Y));
             if (distance >= canvasWidth / 2 || distance >= canvasHeight / 2)
                 return;
-            Aileron = -deltaPos.Y;
-            Elevator = deltaPos.X;
+            Aileron = Math.Round(2.1 * deltaPos.X / canvasWidth, 2);
+            if (Aileron > 1) Aileron = 1;
+            else if (Aileron < -1) Aileron = -1;
+            Elevator = Math.Round(-2.1 * deltaPos.Y / canvasHeight, 2);
+            if (Elevator > 1) Elevator = 1;
+            else if (Elevator < -1) Elevator = 1;
 
             knobPosition.X = deltaPos.X;
             knobPosition.Y = deltaPos.Y;

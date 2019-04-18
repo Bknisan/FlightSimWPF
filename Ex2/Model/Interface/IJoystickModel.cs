@@ -1,12 +1,6 @@
-﻿using Ex2.Model.EventArgs;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
-namespace Ex2.Models.Interface
+namespace FlightSimulator.Models.Interface
 {
     interface IJoystickModel
     {

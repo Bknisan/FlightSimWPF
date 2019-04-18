@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ex2.Models.EventArgs {
+namespace FlightSimulator.Models.EventArgs {
     public class ArgumentsInfo  {
     
         public ArgumentsInfo(double longtitude, double latitude) {
