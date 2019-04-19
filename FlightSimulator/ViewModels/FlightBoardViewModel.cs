@@ -62,7 +62,7 @@ namespace FlightSimulator.ViewModels
         }
         #endregion
 
-        #region
+        #region ConnectCommand
         private ICommand connectCommand;
         public ICommand ConnectsCommand
         {
@@ -72,7 +72,7 @@ namespace FlightSimulator.ViewModels
                 {
                     new Thread(delegate ()
                     {
-                        Commands.Instance.Connect(ApplicationSettingsModel.Instance.FlightServerIP, ApplicationSettingsModel.Instance.FlightInfoPort);
+                        Commands.Instance.Connect(ApplicationSettingsModel.Instance.FlightServerIP, ApplicationSettingsModel.Instance.FlightCommandPort);
                     }).Start();
                     model.Open(ApplicationSettingsModel.Instance.FlightServerIP, ApplicationSettingsModel.Instance.FlightInfoPort);
                 }));

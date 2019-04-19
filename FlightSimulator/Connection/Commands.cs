@@ -30,12 +30,14 @@ namespace FlightSimulator.Connection
         #endregion
 
         public void Reset() { m_Instance = null; }
-        // connect to server
+        
+
         public void Connect(string ip, int port)
         {
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ip), port);
             client = new TcpClient();
-            while (!client.Connected) // keep trynig to connect
+            // while there is no active server keep trying
+            while (!client.Connected) 
             {
                 try { client.Connect(ep); }
                 catch (Exception) { }
