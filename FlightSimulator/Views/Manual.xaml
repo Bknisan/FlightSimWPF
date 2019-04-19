@@ -15,7 +15,7 @@
                     <RotateTransform Angle="90"/>
                 </TextBlock.LayoutTransform>
             </TextBlock>
-            <Slider Name="throttleSlider" Maximum="1" Minimum="-1" Orientation="Vertical" TickFrequency="0.05" IsSnapToTickEnabled="True" TickPlacement="TopLeft"
+            <Slider Name="throttleSlider" Maximum="1" Minimum="0" Orientation="Vertical" TickFrequency="0.05" IsSnapToTickEnabled="True" TickPlacement="TopLeft"
                     Value="{Binding Throttle,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
             <TextBlock Text ="{Binding ElementName=throttleSlider,
                                 UpdateSourceTrigger=PropertyChanged, Path=Value, StringFormat={}{0:0.00}}"/>
