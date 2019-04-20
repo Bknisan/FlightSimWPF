@@ -38,7 +38,7 @@ namespace FlightSimulator.Models
             set
             {
                 lat = value;
-                NotifyPropertyChanged("Lat"); // Notify viewModel
+                NotifyPropertyChanged("Lat");
             }
         }
 
