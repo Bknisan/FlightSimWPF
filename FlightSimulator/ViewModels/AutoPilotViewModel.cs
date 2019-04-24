@@ -23,7 +23,7 @@ namespace FlightSimulator.ViewModels
             {
                 commands = value;
                 // command isnt sent yet.
-                if (!string.IsNullOrEmpty(Commands) && Background == Brushes.White) Background = Brushes.PaleVioletRed;
+                if (!string.IsNullOrEmpty(Commands) && Background == Brushes.White) Background = Brushes.LightPink;
                 else if (string.IsNullOrEmpty(Commands)) Background = Brushes.White; 
             }
         }

@@ -50,13 +50,8 @@ namespace FlightSimulator.Views
         {
             if (e.PropertyName.Equals("Lat") || e.PropertyName.Equals("Lon"))
             {
-                planeLocations.AppendAsync(Dispatcher, new Point(viewModel.Lat, viewModel.Lon));  
+                planeLocations.AppendAsync(Dispatcher, new Point(viewModel.Lat, viewModel.Lon));
             }
-        }
-
-        private void Connect_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-
         }
     }
 

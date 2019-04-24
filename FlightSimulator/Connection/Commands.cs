@@ -58,7 +58,7 @@ namespace FlightSimulator.Connection
             {
                 // change command with win new line indicator.
                 string tmp = command + "\r\n";
-                // send setter comverted to binary.
+                // send setter converted to binary.
                 sender.Write(System.Text.Encoding.ASCII.GetBytes(tmp));
                 System.Threading.Thread.Sleep(2000);
             }
