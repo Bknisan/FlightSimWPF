@@ -70,12 +70,28 @@ namespace FlightSimulator.ViewModels
             {
                 return connectCommand ?? (connectCommand = new CommandHandler(() =>
                 {
+                    connectOrNot = false;
                     new Thread(delegate ()
                     {
                         Commands.Instance.Connect(ApplicationSettingsModel.Instance.FlightServerIP, ApplicationSettingsModel.Instance.FlightCommandPort);
                     }).Start();
                     model.Open(ApplicationSettingsModel.Instance.FlightServerIP, ApplicationSettingsModel.Instance.FlightInfoPort);
                 }));
+            }
+        }
+        #endregion
+        #region ConnectOrNot
+        public bool trig = true;
+        public bool connectOrNot
+        {
+            get
+            {
+                return trig;
+            }
+            set
+            {
+                trig = value;
+                NotifyPropertyChanged("connectOrNot");
             }
         }
         #endregion

@@ -22,7 +22,7 @@ namespace FlightSimulator.Connection
             listener.Start();
         }
 
-        public void Close() { client.Close(); listener.Stop(); Connected = false; }
+        public void Close() { if (client != null) { client.Close(); } listener.Stop(); Connected = false; }
 
         public string[] Read()
         {

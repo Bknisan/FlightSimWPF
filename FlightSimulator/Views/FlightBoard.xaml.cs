@@ -54,6 +54,10 @@ namespace FlightSimulator.Views
             }
         }
 
+        private void Connect_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
     }
 
 }
