@@ -20,8 +20,8 @@
         </Grid>
         <Grid Grid.Row="1">
             <WrapPanel HorizontalAlignment="Center" >
-                <Button x:Name="OK" Command="{Binding OkCommand}" FontWeight="Bold" Margin="0 15 5 0" Content="OK" Padding="5 5 5 5"/>
-                <Button x:Name="Clear" Command="{Binding ClearCommand}" FontWeight="Bold" Margin="5 15 0 0" Content="Clear" Padding="5 5 5 5"/>
+                <Button x:Name="OK" Command="{Binding OkCommand}" FontWeight="Bold" Margin="0 15 5 0" Content="OK" Padding="5 5 5 5" Background="Chocolate"/>
+                <Button x:Name="Clear" Command="{Binding ClearCommand}" FontWeight="Bold" Margin="5 15 0 0" Content="Clear" Padding="5 5 5 5" Background="Chocolate"/>
             </WrapPanel>
 
         </Grid>

@@ -21,10 +21,11 @@ namespace FlightSimulator.ViewModels
 
             set
             {
+                // typings.
                 commands = value;
-                // command isnt sent yet.
                 if (!string.IsNullOrEmpty(Commands) && Background == Brushes.White) Background = Brushes.LightPink;
-                else if (string.IsNullOrEmpty(Commands)) Background = Brushes.White; 
+                else if (string.IsNullOrEmpty(Commands)) Background = Brushes.White;
+                NotifyPropertyChanged("Commands");
             }
         }
         public Brush Background
@@ -42,7 +43,7 @@ namespace FlightSimulator.ViewModels
         }
 
         #region okCommand
-        private ICommand okCommand; // Ok command for clear button
+        private ICommand okCommand; // ok button.
         public ICommand OkCommand
         {
             get
@@ -50,10 +51,11 @@ namespace FlightSimulator.ViewModels
                 return okCommand ?? (okCommand = new CommandHandler(() =>
                 {
                     string toBeSent = Commands;
-                    Commands = ""; // remove text
-                    NotifyPropertyChanged(Commands); // Notify view!
-                    Background = Brushes.White; // make background white again
-                    model.SendCommands(toBeSent);
+                    // clear window
+                    Commands = "";
+                    Background = Brushes.White; 
+                    // send to simulator.
+                    model.SetVals(toBeSent);
 
                 }));
             }
@@ -72,16 +74,15 @@ namespace FlightSimulator.ViewModels
                 {
                     Commands = "";
                     Background = Brushes.White;
-                    NotifyPropertyChanged(Commands); // Notify view!
                 }));
             }
         }
 
         #endregion
 
-        public void NotifyPropertyChanged(string propName)
+        public void NotifyPropertyChanged(string name)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
     }

@@ -6,14 +6,14 @@ namespace FlightSimulator.Models
 {
     class AutoPilotModel
     {
-        // send commands to the simulator
-        public void SendCommands(string input)
+        // set values
+        public void SetVals(string command)
         {
             if (Commands.Instance.Connected)
             {
                 new Task(delegate ()
                 {
-                    Commands.Instance.ChangeValues(input);
+                    Commands.Instance.ChangeValues(command);
                 }).Start();
             }
 
