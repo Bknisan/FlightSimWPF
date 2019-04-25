@@ -49,7 +49,7 @@ namespace FlightSimulator.Models
             StartRead();
         }
 
-        // read input in a new thread, notify view model about the new data
+        // read input in a new task, notify view model about the new data
         void StartRead()
         {
             new Task(delegate ()
@@ -68,8 +68,9 @@ namespace FlightSimulator.Models
 
         // can stop the reading
         public void StopRead() { info.Stop = true; }
+        public void DisConnect() { info.Close(); }
 
-        public void NotifyPropertyChanged(string propName)
+        public new void NotifyPropertyChanged(string propName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }

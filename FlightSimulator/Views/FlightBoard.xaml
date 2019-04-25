@@ -9,6 +9,7 @@
 
     <DockPanel>
         <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center" >
+            <Button x:Name="Disconnect"  Content="Disconnect" Command="{Binding DisCommand}"  Margin="10 15 0 15" Padding="5 5 5 5" Background="LightYellow"/>
             <Button x:Name="Connect"  Content="Connect"  IsEnabled="{Binding connectOrNot}" Command="{Binding ConnectsCommand}"  Margin="10 15 10 15" Padding="5 5 5 5" Background="LightYellow"/>
             <Button x:Name="Settings" Command="{Binding SettingsCommand}" Content="Settings"  Margin="0 15 10 15" Padding="5 5 5 5" Background="LightYellow"/>
         </WrapPanel>

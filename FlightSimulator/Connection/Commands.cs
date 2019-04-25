@@ -26,10 +26,19 @@ namespace FlightSimulator.Connection
                 }
                 return m_Instance;
             }
+            set
+            {
+                m_Instance = value;
+            }
         }
         #endregion
 
-        public void Reset() { m_Instance = null; }
+        public void Reset() {
+            m_Instance.client.GetStream().Close();
+            m_Instance.client.Close();
+            m_Instance.sender.Close();
+            m_Instance = null;
+        }
         
 
         public void Connect(string ip, int port)
@@ -40,7 +49,7 @@ namespace FlightSimulator.Connection
             while (!client.Connected) 
             {
                 try { client.Connect(ep); }
-                catch (Exception) { }
+                catch (Exception) {}
             }
             Connected = true;
             sender = new BinaryWriter(client.GetStream());

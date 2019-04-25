@@ -68,10 +68,11 @@ namespace FlightSimulator.ViewModels
         {
             get
             {
-                return connectCommand ?? (connectCommand = new CommandHandler(() =>
+                return (connectCommand = new CommandHandler(() =>
                 {
+                    // disable connect button
                     connectOrNot = false;
-                    new Thread(delegate ()
+                    new Task(delegate ()
                     {
                         Commands.Instance.Connect(ApplicationSettingsModel.Instance.FlightServerIP, ApplicationSettingsModel.Instance.FlightCommandPort);
                     }).Start();
@@ -92,6 +93,30 @@ namespace FlightSimulator.ViewModels
             {
                 trig = value;
                 NotifyPropertyChanged("connectOrNot");
+            }
+        }
+        #endregion
+
+        #region disConnect
+        private ICommand disconnection;
+        public ICommand DisCommand
+        {
+            get
+            {
+                return (disconnection = new CommandHandler(() =>
+                 {
+                    // there is active connection.
+                    if (Commands.Instance.Connected)
+                     {
+                        //stop with reading.
+                        model.StopRead();
+                         Commands.Instance.Reset();
+                         Thread.Sleep(2000);
+                         model.DisConnect();
+                        //enable reconnect
+                        connectOrNot = true;
+                     }
+                 }));
             }
         }
         #endregion

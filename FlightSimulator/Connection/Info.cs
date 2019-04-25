@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 
@@ -22,15 +23,21 @@ namespace FlightSimulator.Connection
             listener.Start();
         }
 
-        public void Close() { if (client != null) { client.Close(); } listener.Stop(); Connected = false; }
+        public void Close() { if (client != null) { client.GetStream().Close(); client.Close(); } listener.Stop(); Connected = false; }
 
         public string[] Read()
         {
             if (!Connected)
             {
                 Connected = true;
-                client = listener.AcceptTcpClient();
-                reader = new BinaryReader(client.GetStream());
+                try
+                {
+                    client = listener.AcceptTcpClient();
+                    reader = new BinaryReader(client.GetStream());
+                }
+                // shutdown while trying to connect.
+                catch (Exception)
+                { Close(); }
             }
             
             // input variable.
